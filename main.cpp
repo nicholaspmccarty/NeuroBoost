@@ -26,26 +26,46 @@
  * pixel in the image.
  */
 Matrix loadPGM(const std::string& path) {
-    std::ifstream file(path);
-    if (!file.good()) {
-        throw std::runtime_error("Unable to read " + path);
-    }
-    // First read the header and dimensions
-    std::string hdr;
-    int width, height;
-    Val maxVal, value;
-    file >> hdr >> width >> height >> maxVal;
-    if (hdr != "P2") {
-        throw std::runtime_error("Only P2 PGM format is supported");
-    }
-    // Create a column matrix to read all of the data and normalize it
-    Matrix img(width * height, 1);
-    for (int i = 0; (i < width * height); i++) {
-        file >> value;
-        img[i][0] = value / maxVal;
-    }
-    return img;
+   std::ifstream file(path, std::ios::in | std::ios::binary);
+   if (!file.is_open()) {
+       throw std::runtime_error("Unable to read " + path);
+   }
+
+
+   // Read header
+   std::string hdr;
+   int width, height;
+   Val maxVal;
+   file >> hdr >> width >> height >> maxVal;
+  
+   if (hdr != "P2") {
+       throw std::runtime_error("Only P2 PGM format is supported");
+   }
+  
+   // Ignore whitespace between header and data
+   file.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+
+   // Pre-allocate the matrix with known size
+   Matrix img(width * height, 1);
+  
+   // Read all the pixel values in one go
+   std::vector<int> buffer(width * height);
+   for (int& pixel : buffer) {
+       file >> pixel;
+   }
+
+
+   // Normalize the pixel values and store them in the matrix
+   Val invMaxVal = 1.0 / maxVal;
+   for (int i = 0; i < width * height; ++i) {
+       img[i][0] = buffer[i] * invMaxVal;
+   }
+
+
+   return img;
 }
+
 
 /**
  * Helper method to compute the expected output for a given image.
