@@ -1,0 +1,42 @@
+-- Epoch #0 --
+Training with 5000 images...
+Correct classification: 1090 [0.109% ]
+Elapsed time = 3673 milliseconds.
+-- Epoch #1 --
+Training with 5000 images...
+Correct classification: 2043 [0.2043% ]
+Elapsed time = 3587 milliseconds.
+-- Epoch #2 --
+Training with 5000 images...
+Correct classification: 2947 [0.2947% ]
+Elapsed time = 3611 milliseconds.
+-- Epoch #3 --
+Training with 5000 images...
+Correct classification: 3108 [0.3108% ]
+Elapsed time = 3598 milliseconds.
+-- Epoch #4 --
+Training with 5000 images...
+Correct classification: 3164 [0.3164% ]
+Elapsed time = 3594 milliseconds.
+-- Epoch #5 --
+Training with 5000 images...
+Correct classification: 3195 [0.3195% ]
+Elapsed time = 3599 milliseconds.
+-- Epoch #6 --
+Training with 5000 images...
+Correct classification: 3217 [0.3217% ]
+Elapsed time = 3646 milliseconds.
+-- Epoch #7 --
+Training with 5000 images...
+Correct classification: 3230 [0.323% ]
+Elapsed time = 3591 milliseconds.
+-- Epoch #8 --
+Training with 5000 images...
+Correct classification: 3236 [0.3236% ]
+Elapsed time = 3603 milliseconds.
+-- Epoch #9 --
+Training with 5000 images...
+Correct classification: 3248 [0.3248% ]
+Elapsed time = 3596 milliseconds.
+[ perf record: Woken up 25 times to write data ]
+[ perf record: Captured and wrote 6.028 MB perf.data (722 samples) ]
